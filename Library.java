@@ -39,7 +39,7 @@ public class Library extends Building{
    * default constructor careates a library even if the information of the attributes is not known
    */
   public Library(){
-    this("name unknown","adress unknown", 0, false);
+    this("name unknown","adress unknown", 1, false);
   }
     
   //methods for the library class
@@ -105,7 +105,6 @@ public class Library extends Building{
    */
   public boolean isAvailable(String title){
     return this.collection.get(title)==true;
-
   } 
 
   /**
@@ -164,5 +163,4 @@ public class Library extends Building{
     System.out.println(mylib.containsTitle("meowy"));
     mylib.printCollection();
   }
-  
 }

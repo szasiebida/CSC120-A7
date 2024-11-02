@@ -46,7 +46,7 @@ public class House extends Building {
    */
   public House(String name, int nFloors, boolean hasDiningRoom, boolean elevator) {
     this(name, "1 chapin way", nFloors, hasDiningRoom, elevator);  
-}
+  }
 
   //accesors for the house class
 
@@ -107,7 +107,7 @@ public class House extends Building {
    * overided showOptions method for house class
    */
   public void showOptions() {
-    System.out.println("Available options at " + this.name + ":\n + enter() \n + exit() \n + goUp() \n + goDown()\n + goToFloor(n)\n + moveIn(name)\n + moveOut(name)\n isResident(name) ");
+    System.out.println("Available options at " + this.name + ":\n + enter() \n + exit() \n + goUp() \n + goDown()\n + goToFloor(n)\n + moveIn(name)\n + moveOut(name)\n isResident(name)\n hasDiningRoom\n nResidents ");
   }
 
   /**
