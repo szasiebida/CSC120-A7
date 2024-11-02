@@ -27,6 +27,21 @@ public class Library extends Building{
     System.out.println("You have built a library: 📖");
   }
 
+  /**
+   * default constructor that can be used if only the anme of the library is known
+   */
+  public Library(String name){
+    this();
+    this.name=name;
+  }
+
+  /**
+   * default constructor careates a library even if the information of the attributes is not known
+   */
+  public Library(){
+    this("name unknown","adress unknown", 0, false);
+  }
+    
   //methods for the library class
   /**
    * method that adds a book to the collection 
@@ -107,6 +122,7 @@ public class Library extends Building{
       }
     }
   } 
+ 
 
   /**
    * overided show options method for the library class

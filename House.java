@@ -30,6 +30,24 @@ public class House extends Building {
     System.out.println("You have built a house: 🏠");
   }
 
+  /**
+   * alternate constructor that has default values of wilson house 
+   */
+  public House(){
+    this("wilson","1paradise road",4,false,false);
+  }
+
+  /**
+   * default constructor that can be used if someone doesnt know the adress defaults to smith mailing adress
+   * @param name the name of the house 
+   * @param nFloors number of floors
+   * @param hasDiningRoom if there is a dining room
+   * @param elevator if there is an elevator
+   */
+  public House(String name, int nFloors, boolean hasDiningRoom, boolean elevator) {
+    this(name, "1 chapin way", nFloors, hasDiningRoom, elevator);  
+}
+
   //accesors for the house class
 
   /**
@@ -106,7 +124,7 @@ public class House extends Building {
       }
       System.out.println("You are now on floor #" + floorNum + " of " + this.name);
       this.activeFloor = floorNum;
-    } else {
+      } else {
       System.out.println("there is no elevator in this building try goup() instead");
     }
   }

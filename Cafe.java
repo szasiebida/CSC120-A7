@@ -27,6 +27,22 @@ public class Cafe extends Building{
     }
 
     /**
+     * default constructor that makes the CC 
+     */
+    public Cafe(){
+        this("CC","1 chapin way",2,100,100,100,100);
+    }
+
+    /**
+     * constructor that takes an input for the name and address but defaults on the values of materials
+     * @param name name of the cafe
+     * @param address address of the cafe 
+     */
+    public Cafe(String name, String address){
+        this(name, address, 1, 100,100,100,100);
+    }
+
+    /**
      * method to make a coffee and remove the appropriate amounts from the innventory 
      * @param size size of the coffee
      * @param nSugarPackets number of sugars in the coffee
