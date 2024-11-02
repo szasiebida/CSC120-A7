@@ -55,7 +55,21 @@ public class Cafe extends Building{
         this.nCreams+=nCreams;
         this.nCups+=nCups;
     } 
-        
+    
+    /**
+     * overided showOptions method for cafe class
+     */
+    public void showOptions() {
+        System.out.println("Available options at " + this.name + ":\n + enter() \n + exit() \n + goUp() \n + goDown()\n + sellCoffee(size, nSugarPackets, nCreams)\n + restock(nCoffeeOunces,  nSugarPackets, nCreams, nCups) ");
+    }
+
+    /**
+     * overided method to go to a floor that is not valid because cafes dont have elevators 
+     * @param floorNum the floor number you want to go to 
+     */
+    public void goToFloor(int floorNum) {
+        System.out.println("cafes dont have elevators sorry");
+    }
 
     public static void main(String[] args) {
         Cafe mycafe= new Cafe("compass","library",6, 20,100,20,20);

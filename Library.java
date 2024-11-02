@@ -10,6 +10,7 @@ public class Library extends Building{
 
   //atributes
   private Hashtable<String, Boolean> collection;
+  private boolean elevator;
 
   //constructor 
   /**
@@ -17,9 +18,11 @@ public class Library extends Building{
    * @param name name of the building 
    * @param address address of building
    * @param nFloors number of floors 
+   * @param elevator if there is an elevator 
    */
-  public Library(String name, String address, int nFloors) {
+  public Library(String name, String address, int nFloors, boolean elevator) {
     super(name, address,nFloors);
+    this.elevator=elevator;
     this.collection= new Hashtable<String, Boolean>(0);
     System.out.println("You have built a library: 📖");
   }
@@ -105,8 +108,34 @@ public class Library extends Building{
     }
   } 
 
+  /**
+   * overided show options method for the library class
+   */
+  public void showOptions() {
+    System.out.println("Available options at " + this.name + ":\n + enter() \n + exit() \n + goUp() \n + goDown()\n + goToFloor(n)\n + addTitle(title\n + removeTitle(title)\n checkOut(title)\n returnBook(title) \n containsTitle(title)\n isAvaliable(title) ");
+  }
+
+  /**
+   * overided method to go to a floor that is only valid if the library has an elevator 
+   * @param floorNum the floor number you want to go to 
+   */
+  public void goToFloor(int floorNum) {
+    if (this.elevator == true){
+      if (this.activeFloor == -1) {
+        throw new RuntimeException("You are not inside this Building. Must call enter() before navigating between floors.");
+      }
+      if (floorNum < 1 || floorNum > this.nFloors) {
+        throw new RuntimeException("Invalid floor number. Valid range for this Building is 1-" + this.nFloors +".");
+      }
+      System.out.println("You are now on floor #" + floorNum + " of " + this.name);
+      this.activeFloor = floorNum;
+    } else {
+      System.out.println("there is no elevator in this building try goup() instead");
+    }
+  }
+
   public static void main(String[] args) {
-    Library mylib= new Library("nielson","123 lane",4);
+    Library mylib= new Library("nielson","123 lane",4, true);
     mylib.addTitle("meow");
     System.out.println(mylib.collection);
     // mylib.removeTitle("meow");

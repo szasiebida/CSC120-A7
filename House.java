@@ -4,6 +4,7 @@ public class House extends Building {
   //new attributes for the house class
   private ArrayList<String> residents; 
   private boolean hasDiningRoom;
+  private boolean elevator;
 
   //need to use the building constructor 
   //use super inside the constructor to say before you can make a house make a building
@@ -21,10 +22,11 @@ public class House extends Building {
    * @param nFloors the number of floors
    * @param hasDiningRoom boolean reflecting if the house has a dining room 
    */
-  public House(String name, String address, int nFloors, boolean hasDiningRoom) {
+  public House(String name, String address, int nFloors, boolean hasDiningRoom, boolean elevator) {
     super(name, address,nFloors);
     this.hasDiningRoom=hasDiningRoom;
     this.residents=new ArrayList<String>(0);
+    this.elevator=elevator;
     System.out.println("You have built a house: 🏠");
   }
 
@@ -83,8 +85,34 @@ public class House extends Building {
     return name; 
   } 
 
+  /**
+   * overided showOptions method for house class
+   */
+  public void showOptions() {
+    System.out.println("Available options at " + this.name + ":\n + enter() \n + exit() \n + goUp() \n + goDown()\n + goToFloor(n)\n + moveIn(name)\n + moveOut(name)\n isResident(name) ");
+  }
+
+  /**
+   * overided method to go to a floor that is only valid if the house has an elevator 
+   * @param floorNum the floor number you want to go to 
+   */
+  public void goToFloor(int floorNum) {
+    if (this.elevator == true){
+      if (this.activeFloor == -1) {
+        throw new RuntimeException("You are not inside this Building. Must call enter() before navigating between floors.");
+      }
+      if (floorNum < 1 || floorNum > this.nFloors) {
+        throw new RuntimeException("Invalid floor number. Valid range for this Building is 1-" + this.nFloors +".");
+      }
+      System.out.println("You are now on floor #" + floorNum + " of " + this.name);
+      this.activeFloor = floorNum;
+    } else {
+      System.out.println("there is no elevator in this building try goup() instead");
+    }
+  }
+
   public static void main(String[] args) {
-    House myhouse= new House("sofias house","1 chapin way",5, true);
+    House myhouse= new House("sofias house","1 chapin way",5, true, true);
     System.out.println(myhouse.hasDiningRoom());
     myhouse.moveIn("sofia");
     System.out.println(myhouse.residents);
